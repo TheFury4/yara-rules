@@ -1,6 +1,6 @@
 import "pe"
 
-rule CheatVanta-Fivem 
+rule CheatVantaFivem 
 {
     meta:
         author = "Emanuele Furina"
