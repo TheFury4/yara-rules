@@ -14,8 +14,8 @@ rule sig_2cd9ea183ef88bc1ee850151e47ffc1613b6a4a57ddbb14ef8230cd25ba77a70 {
       date = "2024-05-28"
       hash1 = "2cd9ea183ef88bc1ee850151e47ffc1613b6a4a57ddbb14ef8230cd25ba77a70"
    strings:
-      $s1 = "hSystem.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3>
-      $s2 = "lSystem.Resources.ResourceReader, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c56193>
+      $s1 = "hSystem.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3>"
+      $s2 = "lSystem.Resources.ResourceReader, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c56193>"
       $s3 = "dhRh.exe" fullword wide
       $s4 = "        <requestedExecutionLevel level=\"asInvoker\" uiAccess=\"false\"/>" fullword ascii
       $s5 = "  <assemblyIdentity version=\"1.0.0.0\" name=\"MyApplication.app\"/>" fullword ascii
