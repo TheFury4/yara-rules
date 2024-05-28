@@ -1,0 +1,45 @@
+/*
+   YARA Rule Set
+   Author: Emanuele Furina
+   Date: 2024-05-28
+   Identifier: yara
+*/
+
+/* Rule Set ----------------------------------------------------------------- */
+
+rule TDLoaderX {
+   meta:
+      description = "yara - file TDLoaderX.exe"
+      author = "Emanuele Furina"
+      reference = "https://github.com/TheFury4/yara-rules
+      date = "2024-05-28"
+      hash1 = "1def23597b995278cf45a60dc694da742b92f69b0161a5e6e70551993247bb3d"
+   strings:
+      $x1 = "https://raw.githubusercontent.com/txvx/26262xfree/main/steam.exe" fullword wide
+      $x2 = "TDLoaderX.exe" fullword wide
+      $x3 = "C:\\TD-Files\\TD\\FiveM\\Free External C# Loader New\\obj\\Release\\TDLoaderX.pdb" fullword ascii
+      $x4 = "C:\\TDFreeExternal\\login.txt" fullword wide
+      $s5 = "fSystem.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3ah>
+      $s6 = "lSystem.Resources.ResourceReader, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c56193>
+      $s7 = "  <!-- Enable themes for Windows common controls and dialogs (Windows XP and later) -->" fullword ascii
+      $s8 = "ystem.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aPADPADPBj" fullword ascii
+      $s9 = "C:\\Users\\" fullword wide
+      $s10 = "Error: 2, An error occurred during the download process." fullword wide
+      $s11 = "Version mismatch. Please Download the new version of this product. [TD Loader]" fullword wide
+      $s12 = "ErrorLogs.txt" fullword wide
+      $s13 = "/c start cmd /C \"color b && title Error && echo " fullword wide
+      $s14 = "discord.exe" fullword wide
+      $s15 = "get_lastlogin" fullword ascii
+      $s16 = "\\AppData\\Local\\FiveM\\FiveM.app\\logs" fullword wide
+      $s17 = "{0:MMM_dd_yyyy}_logs.txt" fullword wide
+      $s18 = "raaaaaa" fullword ascii /* reversed goodware string 'aaaaaar' */
+      $s19 = "SYSTEM\\ControlSet001\\Services\\bam\\State\\UserSettings" fullword wide
+      $s20 = "Error loading login details: " fullword wide
+
+      $op0 = { 73 35 00 00 0a 6f 36 00 00 0a 02 7b 34 00 00 04 }
+      $op1 = { 02 00 06 00 34 3a 00 0a }
+      $op2 = { 34 34 00 15 13 00 00 01 13 30 04 00 3a }
+   condition:
+      uint16(0) == 0x5a4d and filesize < 5000KB and
+      ( 1 of ($x*) and 4 of them and all of ($op*) )
+}
