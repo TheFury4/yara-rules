@@ -11,7 +11,6 @@ rule sig_2cd9ea183ef88bc1ee850151e47ffc1613b6a4a57ddbb14ef8230cd25ba77a70 {
    meta:
       description = "yara - file 2cd9ea183ef88bc1ee850151e47ffc1613b6a4a57ddbb14ef8230cd25ba77a70.bin"
       author = "Emanuele Furina"
-      reference = "https://github.com/Neo23x0/yarGen"
       date = "2024-05-28"
       hash1 = "2cd9ea183ef88bc1ee850151e47ffc1613b6a4a57ddbb14ef8230cd25ba77a70"
    strings:
